@@ -1,8 +1,11 @@
 # game-recommendation-engine
 
 
-Aim: 
+## Repository Link
+[Steam Game Recommendation Engine](https://github.com/ShaileshDonthi/game-recommendation-engine)
 
+
+Aim: 
 To develop a recommendation engine that suggests games 
 based on the game tags and sentiment profiles of steam 
 reviews.
