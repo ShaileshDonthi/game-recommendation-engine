@@ -75,7 +75,7 @@ def analyze_sentiment(text):
     except:
         return 0.0
 
-def fetch_game_reviews(num_games=2000, num_reviews_per_game=20, max_workers=5):
+def fetch_game_reviews(num_games=5000, num_reviews_per_game=20, max_workers=5):
     apps_df = get_steam_app_list()
     if len(apps_df) == 0:
         raise Exception("Failed to fetch Steam app list")
@@ -120,6 +120,6 @@ def fetch_all_game_details(app_ids, max_workers=5):
     return game_data
 
 if __name__ == "__main__":
-    df = fetch_game_reviews(num_games=2500, num_reviews_per_game=10)
+    df = fetch_game_reviews(num_games=5000, num_reviews_per_game=10)
     print(f"Fetched data for {len(df)} games")
     df.to_csv("all_steam_games_with_reviews.csv", index=False)
