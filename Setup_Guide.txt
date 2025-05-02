@@ -1,0 +1,86 @@
+Steam Game Recommendation Engine - Complete Setup Guide
+
+1. INSTALLATION
+--------------------------------------------------
+1.1 Install Python 3.10 or newer from python.org
+1.2 Open command prompt/terminal and run:
+
+# Install dependencies
+pip install -r requirements.txt
+
+2. DATA COLLECTION
+--------------------------------------------------
+2.1 Edit data_loader.py (change these values at top of file):
+NUM_GAMES = 500    # Start with 500 for testing
+NUM_REVIEWS = 10   # Reviews per game
+MAX_WORKERS = 3    # Concurrent requests
+
+2.2 Run data collector:
+python data_loader.py
+
+This will:
+- Save to all_steam_games_with_reviews.csv
+- Show progress bars
+- Take ~20 mins for 500 games
+
+3. Load both UTILs
+--------------------------------------------------
+python eda_utils.py
+
+python eval_utils.py
+
+4. MODEL TRAINING
+--------------------------------------------------
+4.1 Run model training:
+python model.py
+
+This will:
+- Generate BERT embeddings
+- Create game_embeddings.pt
+- Take 5-10 mins for 500 games
+
+5. RUN THE WEB APP
+--------------------------------------------------
+5.1 Launch interface:
+streamlit run ui.py
+
+5.2 Access in browser at:
+http://localhost:8501
+
+6. TROUBLESHOOTING
+--------------------------------------------------
+6.1 Rate Limit Errors:
+- Increase REQUEST_DELAY in data_loader.py to 2-5 seconds
+- Reduce MAX_WORKERS to 2-3
+
+6.2 Memory Errors:
+- Reduce NUM_GAMES (start with 100-200)
+- Reduce batch_size in data_loader.py to 50
+
+6.3 Dependency Issues:
+pip install --upgrade -r requirements.txt
+
+7. FINAL NOTES
+--------------------------------------------------
+- For full Steam catalog (50k+ games):
+  * Use cloud server with 16GB+ RAM
+  * Set NUM_GAMES = 0 in data_loader.py
+  * Expect 24+ hours runtime
+
+
+8. FOLDER STRUCTURE
+--------------------------------------------------
+steam-game-recommender/
+├── models/                   
+│   ├── tfidf_vectorizer.joblib				#For TF-IDF 
+│   └── game_embeddings.pt						+
+#For BERT
+├──
+├── eda_utils.py                               # For EDA graphs
+├── eval_utils.py                              # For Model Evaluation
+├── data_loader.py								# Data collection
+├── model.py									# Model training
+├── ui.py       								# Web interface
+├── all_steam_games_with_reviews.csv   			# Collected Data        
+├── failed_appids.log							# Failed APPIDs               
+└── requirements.txt
