@@ -63,7 +63,6 @@ pip install --upgrade -r requirements.txt
 7. FINAL NOTES
 --------------------------------------------------
 - For full Steam catalog (50k+ games):
-  * Use cloud server with 16GB+ RAM
   * Set NUM_GAMES = 0 in data_loader.py
   * Expect 24+ hours runtime
 
