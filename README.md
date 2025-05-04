@@ -4,7 +4,7 @@
 [Sentiment-Driven Game Recommendation Engine](https://github.com/ShaileshDonthi/game-recommendation-engine)
 
 **Aim**:  
-To develop a recommendation engine that suggests games based on gameplay tags and semantic profiles of Steam reviews, using embedded emotional and contextual meaning rather than explicit sentiment classification.
+To develop a recommendation engine that suggests games based on gameplay tags and semantic profiles of Steam reviews, using embedded emotional and contextual meaning rather than explicit tag based classification.
 
 # Sentiment-Driven Game Recommendation Engine
 
@@ -34,7 +34,20 @@ This hybrid recommendation system enhances Steam game discovery by combining gam
 
 
 ## Repository Structure
-
+steam-game-recommender/
+├── models/                   
+│   ├── tfidf_vectorizer.joblib				#For TF-IDF 
+│   └── game_embeddings.pt						+
+#For BERT
+├──
+├── eda_utils.py                               # For EDA graphs
+├── eval_utils.py                              # For Model Evaluation
+├── data_loader.py								# Data collection
+├── model.py									# Model training
+├── ui.py       								# Web interface
+├── all_steam_games_with_reviews.csv   			# Collected Data        
+├── failed_appids.log							# Failed APPIDs               
+└── requirements.txt
 
 ## Running Instructions
 
