@@ -32,7 +32,8 @@ with tabs[0]:
 
         if st.button("Get Recommendations"):
             try:
-                recs = recommender.get_similar_games(selected_game, top_n=top_n, method=method.lower(), sentiment_threshold=sentiment_thresh)
+                norm_method = method.replace('-', '').lower() if isinstance(method, str) else method
+                recs = recommender.get_similar_games(selected_game, top_n=top_n, method=norm_method, sentiment_threshold=sentiment_thresh)
                 st.dataframe(recs, use_container_width=True)
             except Exception as e:
                 st.error(str(e))

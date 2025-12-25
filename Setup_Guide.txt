@@ -83,3 +83,6 @@ steam-game-recommender/
 ├── all_steam_games_with_reviews.csv   			# Collected Data        
 ├── failed_appids.log							# Failed APPIDs               
 └── requirements.txt
+
+
+# run ui with "streamlit run /workspaces/game-recommendation-engine/ui.py"

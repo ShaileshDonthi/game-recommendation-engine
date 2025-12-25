@@ -1,4 +1,8 @@
-import pandas as pd
+try:
+    import pandas as pd
+except Exception:
+    pd = None
+
 
 def compute_precision_at_k(recommendations, true_genre, k=5):
     """
@@ -16,7 +20,12 @@ def evaluate_on_sample(df, recommender, k=5, method="bert"):
     """
     Runs evaluation across a few random samples
     """
-    games = df.sample(10, random_state=42)
+    # assume df is a pandas-like DataFrame; if pandas not available, helpers should provide data
+    if pd is not None:
+        games = df.sample(10, random_state=42)
+    else:
+        # fallback: take first 10 rows from iterable-like df
+        games = list(df[:10])
     results = []
     for _, row in games.iterrows():
         try:
